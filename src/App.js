@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Alphabet from './components/Alphabet'
 
 class App extends Component {
   constructor(props){
@@ -24,6 +25,7 @@ class App extends Component {
     return (
       <div>
         Sup
+        <Alphabet />
       </div>
     );
   }
