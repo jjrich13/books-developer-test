@@ -12,10 +12,6 @@ Given that you have a table “Books” populated with the book’s ISBN number,
 
 ## Implementing and Running
 
-For and already deployed version go here: https://safe-wildwood-34616.herokuapp.com/
-
-To run it locally follow these steps:
-
 1. Clone or download this repository 
 
 2. `npm install`
