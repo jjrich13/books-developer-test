@@ -5,8 +5,12 @@ const router = express.Router();
 const dummyArray = ['One', 'Two', 'Three']
 
 router.get('/',(req, res) => {
-    console.log('go to get');
-    res.send(dummyArray)
+    pool.query('SELECT * FROM books').then(response => {
+        res.send(response.rows)
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500)
+    })
     
 })
 
