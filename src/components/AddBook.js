@@ -42,7 +42,7 @@ class AddBook extends Component {
   renderErrorText = () => {
       if(this.state.error){
           return(
-            <p style={styles.errorStyle}>{this.state.error}</p>
+            <span style={styles.errorStyle}>{this.state.error}</span>
           )
       }
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Alphabet from './components/Alphabet'
 import AddBook from './components/AddBook'
+import AllBooks from './components/AllBooks'
 
 class App extends Component {
   constructor(props){
@@ -29,32 +30,35 @@ class App extends Component {
     for(const book of books){
       let addLetter = true
       for(const letter of output){
-        if(letter == book.title[0]){
+        if(book.title.toUpperCase().startsWith(letter.toUpperCase())){
           addLetter = false
         }
       }
       if(addLetter){
-        output.push(book.title[0])
+        output.push(book.title[0].toUpperCase())
       }
     }
-    return output
+    return output.sort()
+  }
+
+  scroll = (letter) => {
+    let target = document.getElementById(letter)
+    target.scrollIntoView(true);
   }
 
   render() {
-    console.log(this.generateSectionHeaders(this.state.books).sort());
+    console.log(this.generateSectionHeaders(this.state.books));
     
     return (
       <div>
-        <Alphabet />
-        <ul>
-          {this.state.books.map((book, index) => {
-            return(
-              <li key={index}>
-                {book.title}
-              </li>
-            )
-          }) || `<li>Loading...</li>`}
-        </ul>
+        <Alphabet 
+          keyLetters = {this.generateSectionHeaders(this.state.books)}
+          scroll={this.scroll}
+        />
+        <AllBooks 
+          books={this.state.books}
+          keyLetters = {this.generateSectionHeaders(this.state.books)}
+        />
         <AddBook 
           fetchBooks={this.fetchBooks}
         />

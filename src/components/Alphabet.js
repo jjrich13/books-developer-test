@@ -25,6 +25,7 @@ class Alphabet extends Component {
                     <span 
                         key={index}
                         style={styles.keyLetter}
+                        onClick={() => this.props.scroll(keyLetter)}
                     >
                         {letter}
                     </span>
@@ -40,7 +41,7 @@ class Alphabet extends Component {
     
     return (
       <div>
-        {this.letterMap(['A','R','Z'])}
+        {this.letterMap(this.props.keyLetters)}
       </div>
     );
   }
