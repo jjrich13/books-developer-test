@@ -14,4 +14,16 @@ router.get('/',(req, res) => {
     
 })
 
+router.post('/', (req, res) => {
+    pool.query(`INSERT INTO books ("ISBN","title","description")
+        VALUES($1, $2, $3)`, 
+        [req.body.ISBN, req.body.title, req.body.description]
+    ).then(response => {
+        res.sendStatus(201)
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500)
+    })
+})
+
 module.exports = router;
